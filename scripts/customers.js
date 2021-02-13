@@ -70,6 +70,7 @@ function renderItems(doc) {
     tableRow.appendChild(ordersButton);
 
     ordersButton.setAttribute("id", "orders");
+    ordersButton.setAttribute("class", "btn indigo  text-white");
 
     customerDetailsList.appendChild(tableRow);
     document.getElementById("orders").onclick = function() {
