@@ -2,33 +2,31 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <title>Shops</title>
+
+    <title>Document</title>
 </head>
 
 <body>
-
-    <table id="shop-data">
-        <tr>
-            <th>Shop Name</th>
-            <th>Shop Address</th>
-            <th>Shop Catogary</th>
-        </tr>
-    </table>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <div>
+        <table id="earnings-table">
+            <tr>
+                <th>Order Id</th>
+                <th>Listed Price</th>
+                <th>Real Price</th>
+                <th>Proffit</th>
+            </tr>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
-
-    <script src="scripts/shops.js">
-    </script>
-</body>
-
-</html>
+    <script src="scripts/shops.js"></script>
