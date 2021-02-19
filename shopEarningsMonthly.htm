@@ -5,23 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-
-    <title>Document</title>
+    <title>Monthly Shop Earnings</title>
 </head>
 
 <body>
-    <div>
-        <table id="earnings-table">
-            <tr>
-                <th>Order Id</th>
-                <th>Listed Price</th>
-                <th>Real Price</th>
-                <th>Proffit</th>
-            </tr>
-        </table>
-    </div>
+    <table class="center" id="monthly-shop-earnings">
+        <caption>
+            <h4>Monthly Shop Earnings</h4>
+
+        </caption>
+        <tr>
+            <th>Month</th>
+            <th>Shop Name</th>
+            <th>Shop Id</th>
+            <th>Earnings</th>
+        </tr>
+    </table>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-firestore.js"></script>
@@ -29,4 +28,7 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
-    <script src="scripts/showEarnings.js"></script>
+    <script src="scripts/shopEarningsMonthly.js"></script>
+</body>
+
+</html>

@@ -59,8 +59,9 @@ function renderShops(doc) {
     btn.textContent = "View Earnings";
 
     btn.setAttribute("class", "btn");
-    btn.onclick = function(event) {
-        event.preventDefault();
+    btn.onclick = function() {
+        url = "shopEarnings.html?name=" + encodeURIComponent(doc.data()["Email"]);
+        document.location.href = url;
     };
     tr.setAttribute("id", doc.id);
 
