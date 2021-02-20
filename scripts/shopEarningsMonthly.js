@@ -24,13 +24,37 @@ db.collection("order_status")
     .get()
     .then(function(querySnapshot) {
         querySnapshot.docs.forEach(function(doc) {
-            /* var date = doc.data()["ordertime"].toDate();
-                                                                                                    var d = new Date(date);
-                                                                                                    shopData["date"] = d.getMonth() + 1 + "/" + d.getFullYear();
-                                                                                                    shopData["shop_id"] = doc.data()["shop_id"];
-                                                                                                    list.push(shopData);*/
-            //console.log("shop_id is " + doc.data()["shop_id"]);
-            getPrices(doc.data()["shop_id"], doc.data()["item_id"]);
+            if (doc.data()["ordertime"] != null) {
+                var date = doc.data()["ordertime"].toDate();
+                var d = new Date(date);
+                shopData["date"] = d.getMonth() + 1 + "/" + d.getFullYear();
+                shopData["shop_id"] = doc.data()["shop_id"];
+
+                var shopId = doc.data()["shop_id"];
+                var itemId = doc.data()["item_id"];
+
+                db.collection("shops")
+                    .doc(shopId)
+                    .collection("Listed Items")
+                    .get()
+                    .then(function(querySnapshot) {
+                        querySnapshot.docs.forEach(function(doc) {
+                            if (doc.id == itemId) {
+                                if (doc.data()["realPrice"] != null) {
+                                    var realPrice = parseFloat(doc.data()["realPrice"]);
+                                    var listedPrice = parseFloat(doc.data()["itemPrice"]);
+                                    var proffit = listedPrice - realPrice;
+                                }
+                            }
+                        });
+                    })
+                    .catch(function(error) {
+                        return error;
+                    });
+
+                list.push(shopData);
+                console.log(list);
+            }
         });
     })
     .catch(function(error) {
@@ -38,24 +62,21 @@ db.collection("order_status")
     });
 
 function getPrices(shopId, itemId) {
-    // console.log(shopId);
     db.collection("shops")
         .doc(shopId)
         .collection("Listed Items")
         .get()
         .then(function(querySnapshot) {
             querySnapshot.docs.forEach(function(doc) {
-                // console.log("doc id is " + doc.id + "\n" + "ite id is " + itemId);
                 if (doc.id == itemId) {
-                    console.log("Matched");
-                } else {
-                    console.log("not mayched");
+                    if (doc.data()["realPrice"] != null) {
+                        var realPrice = parseFloat(doc.data()["realPrice"]);
+                        var listedPrice = parseFloat(doc.data()["itemPrice"]);
+                        var proffit = listedPrice - realPrice;
+                        //console.log(proffit);
+                    }
+                    return proffit;
                 }
-                /*  var proffit =
-                                                                                                                                                                                                            parseFloat(doc.data()["realPrice"]) -
-                                                                                                                                                                                                            parseFloat(doc.data()["itemPrice"]);*/
-
-                //  console.log(proffit);
             });
         })
         .catch(function(error) {
