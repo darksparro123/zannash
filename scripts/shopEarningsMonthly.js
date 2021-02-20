@@ -22,6 +22,7 @@ var shopData = {};
 db.collection("order_status")
     .where("recieved_order", "==", true)
     .get()
+<<<<<<< HEAD
     .then(function (querySnapshot) {
         querySnapshot.docs.forEach(function (doc) {
             /* var date = doc.data()["ordertime"].toDate();
@@ -31,6 +32,41 @@ db.collection("order_status")
                                                                                                     list.push(shopData);*/
             //console.log("shop_id is " + doc.data()["shop_id"]);
             getPrices(doc.data()["shop_id"], doc.data()["item_id"]);
+=======
+    .then(function(querySnapshot) {
+        querySnapshot.docs.forEach(function(doc) {
+            if (doc.data()["ordertime"] != null) {
+                var date = doc.data()["ordertime"].toDate();
+                var d = new Date(date);
+                shopData["date"] = d.getMonth() + 1 + "/" + d.getFullYear();
+                shopData["shop_id"] = doc.data()["shop_id"];
+
+                var shopId = doc.data()["shop_id"];
+                var itemId = doc.data()["item_id"];
+
+                db.collection("shops")
+                    .doc(shopId)
+                    .collection("Listed Items")
+                    .get()
+                    .then(function(querySnapshot) {
+                        querySnapshot.docs.forEach(function(doc) {
+                            if (doc.id == itemId) {
+                                if (doc.data()["realPrice"] != null) {
+                                    var realPrice = parseFloat(doc.data()["realPrice"]);
+                                    var listedPrice = parseFloat(doc.data()["itemPrice"]);
+                                    var proffit = listedPrice - realPrice;
+                                }
+                            }
+                        });
+                    })
+                    .catch(function(error) {
+                        return error;
+                    });
+
+                list.push(shopData);
+                console.log(list);
+            }
+>>>>>>> 252c4e946121518f6e2c3e02253669af11cb89e6
         });
     })
     .catch(function (error) {
@@ -38,24 +74,27 @@ db.collection("order_status")
     });
 
 function getPrices(shopId, itemId) {
-    // console.log(shopId);
     db.collection("shops")
         .doc(shopId)
         .collection("Listed Items")
         .get()
+<<<<<<< HEAD
         .then(function (querySnapshot) {
             querySnapshot.docs.forEach(function (doc) {
                 // console.log("doc id is " + doc.id + "\n" + "ite id is " + itemId);
+=======
+        .then(function(querySnapshot) {
+            querySnapshot.docs.forEach(function(doc) {
+>>>>>>> 252c4e946121518f6e2c3e02253669af11cb89e6
                 if (doc.id == itemId) {
-                    console.log("Matched");
-                } else {
-                    console.log("not mayched");
+                    if (doc.data()["realPrice"] != null) {
+                        var realPrice = parseFloat(doc.data()["realPrice"]);
+                        var listedPrice = parseFloat(doc.data()["itemPrice"]);
+                        var proffit = listedPrice - realPrice;
+                        //console.log(proffit);
+                    }
+                    return proffit;
                 }
-                /*  var proffit =
-                                                                                                                                                                                                            parseFloat(doc.data()["realPrice"]) -
-                                                                                                                                                                                                            parseFloat(doc.data()["itemPrice"]);*/
-
-                //  console.log(proffit);
             });
         })
         .catch(function (error) {
