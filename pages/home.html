@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/home.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <title>Home</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <style>
+        * {
+            font-family: 'Ubuntu';
+        }
+    </style>
+</head>
+
+<body class="main">
+    <div class="navbar">
+        <div class="title">DelivoAdmin</div>
+            <ul>
+                <li><a href="/pages/home.html">Home</a></li>
+                <li><a href="/pages/shops.html">Shops</a></li>
+                <li><a href="/pages/itemRequests.html">Items Requests</a></li>
+                <li><a href="/pages/shops.html">Riders</a></li>
+                <li><a href="/pages/shops.html">Customers</a></li>
+                <li><div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn"><i class="material-icons"
+                            style="color: aliceblue;">settings</i></button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="#">New Admin</a>
+                    </div>
+                </div></li>
+            </ul>
+    </div>
+    <div class="display">
+        <div class="earnings"></div>
+        <div class="statics">
+            <div class="stdata" style="color: rgb(190, 0, 0);"><div class="number" style="color: rgb(190, 0, 0);" id="shops">-</div>Shops</div>
+            <div class="stdata" style="color:blue;"><div class="number" style="color: blue;" id="users">-</div>Users</div>
+            <div class="stdata" style="color: purple"><div class="number" style="color: purple;" id="riders">-</div>Riders</div>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- <a href="customers.html">
+        <button class="btn indigo">Customers
+</button></a>
+    <a href="rider.html"><button class="btn indigo">Riders</button></a>
+    <a href="shops.html"><button class="btn indigo">Shops</button></a>
+    <a href="shopRequests.html"><button class="btn indigo">Shop Requests</button></a>
+    <a href="riderRequests.html"><button class="btn indigo">Rider Requests</button></a>
+    <a href="itemRequests.html"><button class="btn indigo">Item Requests</button></a>
+    <a href="shopEarningsMonthly.htm"><button class="btn indigo">Shop Earnings</button></a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+
+    <script src="/scripts/home.js"></script>
+
+</body>
+
+</html>

@@ -22,8 +22,8 @@ var shopData = {};
 db.collection("order_status")
     .where("recieved_order", "==", true)
     .get()
-    .then(function(querySnapshot) {
-        querySnapshot.docs.forEach(function(doc) {
+    .then(function (querySnapshot) {
+        querySnapshot.docs.forEach(function (doc) {
             /* var date = doc.data()["ordertime"].toDate();
                                                                                                     var d = new Date(date);
                                                                                                     shopData["date"] = d.getMonth() + 1 + "/" + d.getFullYear();
@@ -33,7 +33,7 @@ db.collection("order_status")
             getPrices(doc.data()["shop_id"], doc.data()["item_id"]);
         });
     })
-    .catch(function(error) {
+    .catch(function (error) {
         console.log(error);
     });
 
@@ -43,8 +43,8 @@ function getPrices(shopId, itemId) {
         .doc(shopId)
         .collection("Listed Items")
         .get()
-        .then(function(querySnapshot) {
-            querySnapshot.docs.forEach(function(doc) {
+        .then(function (querySnapshot) {
+            querySnapshot.docs.forEach(function (doc) {
                 // console.log("doc id is " + doc.id + "\n" + "ite id is " + itemId);
                 if (doc.id == itemId) {
                     console.log("Matched");
@@ -58,7 +58,7 @@ function getPrices(shopId, itemId) {
                 //  console.log(proffit);
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             return error;
         });
 }
