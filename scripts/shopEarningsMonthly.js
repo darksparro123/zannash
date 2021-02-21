@@ -22,6 +22,17 @@ var shopData = {};
 db.collection("order_status")
     .where("recieved_order", "==", true)
     .get()
+<<<<<<< HEAD
+    .then(function (querySnapshot) {
+        querySnapshot.docs.forEach(function (doc) {
+            /* var date = doc.data()["ordertime"].toDate();
+                                                                                                    var d = new Date(date);
+                                                                                                    shopData["date"] = d.getMonth() + 1 + "/" + d.getFullYear();
+                                                                                                    shopData["shop_id"] = doc.data()["shop_id"];
+                                                                                                    list.push(shopData);*/
+            //console.log("shop_id is " + doc.data()["shop_id"]);
+            getPrices(doc.data()["shop_id"], doc.data()["item_id"]);
+=======
     .then(function(querySnapshot) {
         querySnapshot.docs.forEach(function(doc) {
             if (doc.data()["ordertime"] != null) {
@@ -55,9 +66,10 @@ db.collection("order_status")
                 list.push(shopData);
                 console.log(list);
             }
+>>>>>>> 252c4e946121518f6e2c3e02253669af11cb89e6
         });
     })
-    .catch(function(error) {
+    .catch(function (error) {
         console.log(error);
     });
 
@@ -66,8 +78,14 @@ function getPrices(shopId, itemId) {
         .doc(shopId)
         .collection("Listed Items")
         .get()
+<<<<<<< HEAD
+        .then(function (querySnapshot) {
+            querySnapshot.docs.forEach(function (doc) {
+                // console.log("doc id is " + doc.id + "\n" + "ite id is " + itemId);
+=======
         .then(function(querySnapshot) {
             querySnapshot.docs.forEach(function(doc) {
+>>>>>>> 252c4e946121518f6e2c3e02253669af11cb89e6
                 if (doc.id == itemId) {
                     if (doc.data()["realPrice"] != null) {
                         var realPrice = parseFloat(doc.data()["realPrice"]);
@@ -79,7 +97,7 @@ function getPrices(shopId, itemId) {
                 }
             });
         })
-        .catch(function(error) {
+        .catch(function (error) {
             return error;
         });
 }
