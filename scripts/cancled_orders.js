@@ -24,7 +24,9 @@ db.collection("cancled_orders")
             renderCancledOrders(doc);
         });
     })
-    .catch(function(error) {});
+    .catch(function(error) {
+        console.log(error);
+    });
 
 function renderCancledOrders(doc) {
     let tr = document.createElement("tr");
@@ -38,15 +40,22 @@ function renderCancledOrders(doc) {
 
     bannedButton.onclick = function() {
         console.log(doc.data()["customer_id"]);
-        var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com");
-        var authData = ref.getAuth();
 
-        if (authData) {
-            console.log("Authenticated user with uid:", authData.uid);
-        }
         const bannedUser = firebase.functions().httpsCallable("disableUser");
-        bannedUser("hello world").then((response) => {
-            console.log(response);
+        bannedUser(doc.data()["customer_id"]).then((response) => {
+            db.collection("banned_users")
+                .doc(doc.data()["customer_id"])
+                .set({ customer_id: doc.data()["customer_id"] });
+            db.collection("cancled_orders")
+                .where("customer_id", "==", doc.data()["customer_id"])
+                .get()
+                .then(function(querySnapshot) {
+                    querySnapshot.forEach(function(doc) {
+                        db.collection("cancled_orders").doc(doc.id).delete();
+                        location.reload();
+                    });
+                })
+                .catch(function(error) {});
         });
     };
 
