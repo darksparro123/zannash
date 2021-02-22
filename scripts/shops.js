@@ -51,6 +51,7 @@ function renderShops(doc) {
     let shopName = document.createElement("td");
     let shopAddress = document.createElement("td");
     let catogary = document.createElement("td");
+    let buttontd=document.createElement("td");
     let btn = document.createElement("button");
 
     shopName.textContent = doc.data()["Shop Name"];
@@ -64,11 +65,14 @@ function renderShops(doc) {
         document.location.href = url;
     };
     tr.setAttribute("id", doc.id);
-
+    buttontd.appendChild(btn);
     tr.append(shopName);
     tr.append(shopAddress);
     tr.append(catogary);
-    tr.appendChild(btn);
+    tr.appendChild(buttontd);
     tr.className = "txt";
     table.appendChild(tr);
+}
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
 }

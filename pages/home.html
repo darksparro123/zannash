@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/home.css">
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <title>Home</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -19,28 +19,51 @@
 
 <body class="main">
     <div class="navbar">
-        <div class="title">DelivoAdmin</div>
-            <ul>
-                <li><a href="/pages/home.html">Home</a></li>
-                <li><a href="/pages/shops.html">Shops</a></li>
-                <li><a href="/pages/itemRequests.html">Items Requests</a></li>
-                <li><a href="/pages/shops.html">Riders</a></li>
-                <li><a href="/pages/shops.html">Customers</a></li>
-                <li><div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn"><i class="material-icons"
-                            style="color: aliceblue;">settings</i></button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <a href="#">New Admin</a>
+        <div class="title">
+            <div class="dropdown" id="mobile-screen">
+                <button onclick="myFunction()" class="dropbtn"><i class="material-icons"
+                        style="color: aliceblue;">menu</i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/pages/home.html" class="top-a">Home</a>
+                    <a href="/pages/shop/shops.html" class="top-a">Shops</a>
+                    <a href="/pages/itemRequests.html" class="top-a">Items Requests</a>
+                    <a href="/pages/shops.html" class="top-a">Riders</a>
+                    <a href="/pages/shops.html" class="top-a">Customers</a>
+                    <a href="#">New Admin</a>
+                </div>
+            </div>
+                <div>DelivoAdmin</div>
+            </div>
+            <ul class="top-nav">
+                <li class="active"><a href="/pages/home.html" class="top-a">Home</a></li>
+                <li><a href="/pages/shop/shops.html" class="top-a">Shops</a></li>
+                <li><a href="/pages/itemRequests.html" class="top-a">Items Requests</a></li>
+                <li><a href="/pages/shops.html" class="top-a">Riders</a></li>
+                <li><a href="/pages/shops.html" class="top-a">Customers</a></li>
+                <li>
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn"><i class="material-icons"
+                                style="color: aliceblue;">settings</i></button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <a href="#">New Admin</a>
+                        </div>
                     </div>
-                </div></li>
+                </li>
             </ul>
+        </div>
     </div>
     <div class="display">
         <div class="earnings"></div>
         <div class="statics">
-            <div class="stdata" style="color: rgb(190, 0, 0);"><div class="number" style="color: rgb(190, 0, 0);" id="shops">-</div>Shops</div>
-            <div class="stdata" style="color:blue;"><div class="number" style="color: blue;" id="users">-</div>Users</div>
-            <div class="stdata" style="color: purple"><div class="number" style="color: purple;" id="riders">-</div>Riders</div>
+            <div class="stdata" style="color: rgb(190, 0, 0);">
+                <div class="number" style="color: rgb(190, 0, 0);" id="shops">-</div>Shops
+            </div>
+            <div class="stdata" style="color:blue;">
+                <div class="number" style="color: blue;" id="users">-</div>Users
+            </div>
+            <div class="stdata" style="color: purple">
+                <div class="number" style="color: purple;" id="riders">-</div>Riders
+            </div>
         </div>
 
 

@@ -6,10 +6,12 @@
 .main{
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 .navbar{
     display: flex;
-    flex: 5;
+    /* flex: 5; */
     width: 100%;
     height: 10%;
     background-color: rgb(5, 5, 80);
@@ -18,13 +20,13 @@
 }
 .title{
     color: white;
-    font-size: 2vw;
+    font-size: 110%;
     display: flex;
     flex: 1;
     margin-left: 24px;
 }
 
-ul{
+.top-nav{
     list-style-type: none;
     display: flex;
     flex: 2;
@@ -34,15 +36,22 @@ ul{
     align-items: center;
     width: 100%;
 }
-a{
+.top-a{
     text-decoration: none;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     height: 9vh;
     color: #dddddd;
+}
+li{
+    display: inline;
+}
+.active{
+    background-color: rgb(0, 70, 114);
+    
 }
 .display{
     display: flex;
@@ -82,6 +91,36 @@ a{
     margin-right: 5px;
 }
 
+.sidenav{
+    display: flex;
+    width: 20%;
+    height: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+
+.sidenavbar{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.side-a{
+    text-decoration: none;
+    display: flex;
+    color: rgb(83, 83, 83);
+}
+.side-li{
+    display: flex;
+    margin-top: 20%; 
+    width: 80%;
+    border: 1px solid rgb(173, 172, 172);
+    border-radius: 20px; 
+    padding: 5px;
+    justify-content: center;
+}
+
 .dropbtn {
     background-color: transparent;
     color: black;
@@ -118,7 +157,7 @@ a{
   /* Links inside the dropdown */
   .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 12px;
     text-decoration: none;
     display: block;
   }
@@ -128,3 +167,64 @@ a{
   
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .show {display:block;}
+  @media only screen and (max-width:600px){
+      .top-nav{
+          display:none;
+      }
+      .display{
+          flex-direction: column;
+          width: 100%;
+          height: 100%;
+      }
+      .title{
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          margin-left: 0px;
+      }
+      .dropdown-content{
+          left: 0;
+      }
+      .statics{
+          width: 100%;
+          
+      }
+      .earnings{
+          width: 100%;
+      }
+      .number{
+          font-size: 10vw;
+      }
+      .stdata{
+          font-size: 5vw;
+          width: 90%;
+      }
+      .sidenavbar{
+          flex-direction: row;
+          overflow-x: auto;
+      }
+      .sidenav{
+          width: 100%;
+          height: 10%;
+          justify-content: center;
+          align-items: center;
+          box-shadow: none;
+
+      }
+      .side-li{
+          margin-top: 0px;
+          margin-left: 5px;
+          
+      }
+      .side-a{
+          font-size: small;
+          width: 100px;
+      }
+            
+  }
+
+  @media only screen and (min-width:600px){
+    #mobile-screen{
+        display: none;
+    }
+}

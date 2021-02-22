@@ -1,8 +1,3 @@
-const requestShopsDivId = document.querySelector("#shops-list");
-const divShopDetails = document.querySelector("#shop-details");
-const divOwnerDetails = document.querySelector("#owner-details");
-const divBankDetails = document.querySelector("#bank-details");
-
 var firebaseConfig = {
     apiKey: "AIzaSyCypuPyiyWM3q2SXBuZnA0UixRkxz54z-Q",
     authDomain: "delivoblackgenpvtltd.firebaseapp.com",
@@ -18,9 +13,13 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 const auth = firebase.auth();
 const db = firebase.firestore();
+console.log("shop requests")
 
 const customerDetailsList = document.querySelector("#customer-details-list");
-
+const requestShopsDivId = document.querySelector("#shops-list");
+const divShopDetails = document.querySelector("#shop-details");
+const divOwnerDetails = document.querySelector("#owner-details");
+const divBankDetails = document.querySelector("#bank-details");
 // data storing variables
 db.collection("shops")
     .where("admin permission", "==", false)
