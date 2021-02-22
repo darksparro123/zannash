@@ -53,24 +53,64 @@ function renderItems(doc) {
     let cAddress = document.createElement("td");
     let cMobile = document.createElement("td");
     let cEmail = document.createElement("td");
+    let cOrders=document.createElement("td");
     let ordersButton = document.createElement("button");
 
+    let cnamelabel=document.createElement("label");
+    let cnamediv=document.createElement("div");
+
+    let cadresslabel=document.createElement("label");
+    let cadressdiv=document.createElement("div");
+
+    let cmobilelabel=document.createElement("label");
+    let cmobilediv=document.createElement("div");
+
+    let cemaillabel=document.createElement("label");
+    let cemaildiv=document.createElement("div");
+
+    let corderslabel=document.createElement("label");
+
+    cnamelabel.textContent="Customer's Name";
+    cName.appendChild(cnamelabel);
+
+    cadresslabel.textContent="Customer's Adress";
+    cAddress.appendChild(cadresslabel);
+
+    cmobilelabel.textContent="Customer's Mobile";
+    cMobile.appendChild(cmobilelabel);
+
+    cemaillabel.textContent="Customer's Email";
+    cEmail.appendChild(cemaillabel);
+
+    corderslabel.textContent="Customer's Orders";
+    cOrders.appendChild(corderslabel);
+
+
+
     ordersButton.textContent = "orders";
-    cName.textContent = doc.data()["Custumer's Name"];
-    cAddress.textContent = doc.data()["Custumer's Address"];
-    cMobile.textContent = doc.data()["Custumer's Mobile Number"];
-    cEmail.textContent = doc.data()["Custumer's Email"];
+    cOrders.appendChild(ordersButton);
+
+    cnamediv.textContent = doc.data()["Custumer's Name"];
+    cName.appendChild(cnamediv);
+    cadressdiv.textContent = doc.data()["Custumer's Address"];
+    cAddress.appendChild(cadressdiv);
+    cmobilediv.textContent = doc.data()["Custumer's Mobile Number"];
+    cMobile.appendChild(cmobilediv);
+    cemaildiv.textContent = doc.data()["Custumer's Email"];
+    cEmail.append(cemaildiv);
 
     tableRow.setAttribute("doc-id", doc.id);
+    ordersButton.setAttribute("id", "orders");
+    ordersButton.setAttribute("class", "btn");
+    
 
     tableRow.appendChild(cName);
     tableRow.appendChild(cAddress);
     tableRow.appendChild(cMobile);
     tableRow.appendChild(cEmail);
-    tableRow.appendChild(ordersButton);
+    tableRow.appendChild(cOrders);
 
-    ordersButton.setAttribute("id", "orders");
-    ordersButton.setAttribute("class", "btn indigo  text-white");
+  
 
     customerDetailsList.appendChild(tableRow);
     document.getElementById("orders").onclick = function() {
@@ -99,3 +139,7 @@ function getCustomersOrders() {
 }
 
 function renderOrders(orderStatusId) {}
+
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}

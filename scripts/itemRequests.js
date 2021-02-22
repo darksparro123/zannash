@@ -17,34 +17,35 @@ const db = firebase.firestore();
 
 db.collection("shops")
     .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
+    .then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+            console.log(doc.id);
             getShopListedItems(doc);
         });
     })
-    .catch(function(error) {
+    .catch(function (error) {
         console.log("Get shop id s failed  " + error);
     });
 
-function getShopListedItems(shoDoc) {
-    db.collection("shops")
+async function getShopListedItems(shoDoc) {
+    await db.collection("shops")
         .doc(shoDoc.id)
         .collection("Listed Items")
         .where("admin_permission", "==", false)
         .get()
-        .then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                db.collection("shops")
-                    .get()
-                    .then(function(querySnapshot) {
-                        querySnapshot.forEach(function(snap) {
-                            renderListedItems(doc, snap);
-                        });
-                    })
-                    .catch(function(error) {});
-            });
+        .then(function (querySnapshot) {
+            //console.log(querySnapshot.docs.length);
+            if (querySnapshot.docs.length != 0) {
+                querySnapshot.forEach(function (doc) {
+                    console.log(shoDoc.data());
+                    console.log(doc.data());
+                    renderListedItems(doc,shoDoc);
+                });
+
+            }
+
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log("get listed items failed " + error);
         });
 }
@@ -63,9 +64,25 @@ function renderListedItems(doc, snap) {
     let f = document.createElement("form");
     let inp = document.createElement("input");
 
+    let shnamelabel=document.createElement("label");
+    let shdiv=document.createElement("div");
+
+    let shidlabel=document.createElement("label");
+    let shiddiv=document.createElement("div");
+
+    let itemnamelabel=document.createElement("label");
+    let itemnamediv=document.createElement("div");
+
+    let itemidlabel=document.createElement("label");
+    let itemiddiv=document.createElement("div");
+
+    let listedpricelabel=document.createElement("label");
+    let listedpricediv=document.createElement("div");
+
     f.setAttribute("id", "give-permission-" + doc.id);
     inp.setAttribute("type", "text");
     inp.setAttribute("id", doc.id);
+    inp.setAttribute("placeholder", "Add Commision");
     f.appendChild(inp);
 
     //addCommision.setAttribute("id", doc.id);
@@ -73,8 +90,8 @@ function renderListedItems(doc, snap) {
     giverPermission.setAttribute("class", "btn");
     //giverPermission.setAttribute("id", doc.id);
     giverPermission.textContent = "Give Permission";
-    giverPermission.onclick = function() {
-        myFun(doc);
+    giverPermission.onclick = function () {
+        myFun(doc,snap);
         console.log(doc.id);
     };
 
@@ -84,11 +101,39 @@ function renderListedItems(doc, snap) {
     img.setAttribute("height", "50");
     itemImage.appendChild(img);
 
-    itemName.textContent = doc.data()["item Name"];
-    listedItemPrice.textContent = doc.data()["realPrice"];
-    itemId.textContent = doc.id;
-    shopName.textContent = snap.data()["Shop Name"];
-    shopId.textContent = snap.id;
+    shnamelabel.textContent="Shop Name: ";
+    shopName.appendChild(shnamelabel);
+
+    shidlabel.textContent="Shop Id: ";
+    shopId.appendChild(shidlabel);
+
+    itemnamelabel.textContent="Item Name: ";
+    itemName.appendChild(itemnamelabel);
+
+    itemidlabel.textContent="Item Id: ";
+    itemId.appendChild(itemidlabel);
+
+    listedpricelabel.textContent="Listed Price: ";
+    listedItemPrice.appendChild(listedpricelabel);
+
+
+
+    itemnamediv.textContent = doc.data()["item Name"];
+    itemName.appendChild(itemnamediv);
+
+    listedpricediv.textContent = doc.data()["realPrice"];
+    listedItemPrice.appendChild(listedpricediv);
+
+    itemiddiv.textContent = doc.id;
+    itemId.appendChild(itemiddiv);
+
+    shdiv.textContent = snap.data()["Shop Name"];
+    shopName.appendChild(shdiv);
+
+    shiddiv.textContent=snap.id;
+    shopId.appendChild(shiddiv);
+
+    
 
     itemRow.appendChild(shopName);
     itemRow.appendChild(shopId);
@@ -104,17 +149,24 @@ function renderListedItems(doc, snap) {
     itemRequestsTable.appendChild(itemRow);
 }
 
-function myFun(doc) {
+async function myFun(doc,snap) {
     var form = document.querySelector("#give-permission-" + doc.id);
     console.log(form[doc.id].value);
-
-    db.collection("shops")
-        .doc("darksparrow856@gmail.com")
+    await db.collection("shops")
+        .doc(snap.id)
         .collection("Listed Items")
         .doc(doc.id)
         .update({ itemPrice: form[doc.id].value, admin_permission: true })
-        .then(function() {
+        .then(function () {
             console.log("updated succesfully");
+            alert("permission Granded");
+            document.location.reload(true);
         })
-        .catch(function(error) {});
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
 }
