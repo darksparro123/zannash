@@ -16,7 +16,7 @@ const db = firebase.firestore();
 const functions = firebase.functions();
 
 const table = document.querySelector("#cancled-orders-table");
-
+console.log("c");
 db.collection("cancled_orders")
     .get()
     .then(function(querySnapshot) {
@@ -34,7 +34,7 @@ function renderCancledOrders(doc) {
     let shopId = document.createElement("td");
     let orderId = document.createElement("td");
     let bannedButton = document.createElement("button");
-
+    console.log(doc.data());
     tr.setAttribute("id", doc.id);
     bannedButton.textContent = "Suspend User";
 
