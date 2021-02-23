@@ -1,0 +1,24 @@
+input[type="text"]{
+    padding: 12px;
+}
+
+@media only screen and (min-width:600px){
+    label{
+        display: none;
+    }
+}
+
+@media only screen and (max-width:600px){
+    td{
+        display: flex;
+        flex-direction: row;
+    }
+    label{
+        font-weight: 600;
+        margin-right: 5px;
+        color: rgb(63, 63, 63);
+    }
+    tr{
+        padding-bottom: 15px;
+    }
+}

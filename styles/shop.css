@@ -3,6 +3,7 @@
     flex-direction: row;
     width: 100%;
     height:90%;
+    align-items: center;
 }
 .table-show{
     display: flex;
@@ -20,6 +21,7 @@ td{
     padding: 10px;
     border-bottom: 2px solid #ddd;
 }
+
 th{
     padding: 12px;
     background-color: rgb(76, 76, 250);
@@ -31,7 +33,7 @@ tr:hover{
 .btn{
     padding: 2px;
     border:2px solid #ddd;
-    font-size: 1vw;
+    font-size: 1.5vw;
 }
 
 @media only screen and (max-width:600px){
