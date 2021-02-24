@@ -21,19 +21,44 @@ form.addEventListener("submit", (e) => {
     const email = form["email"].value;
     const password = form["password"].value;
 
-    console.log(email + " " + password);
-    // console.log(email + password);
     if (email != "" && password != "") {
-        //loadspinner();
-        auth
-            .signInWithEmailAndPassword(email, password)
-            .then((e) => {
-                console.log(e);
-                // stopspinner();
-                //location.replace("adminaprove.html");
+        db.collection("admins")
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.docs.forEach(function(doc) {
+                    if (doc.data()["admin_name"] == email) {
+                        auth
+                            .signInWithEmailAndPassword(email, password)
+                            .then((e) => {
+                                console.log("sign in succusfully" + e);
+                                location.replace("./home.html");
+                            })
+                            .catch((e) => {
+                                if (e["code"] == "auth/user-not-found") {
+                                    firebase
+                                        .auth()
+                                        .createUserWithEmailAndPassword(email, password)
+                                        .then(function(response) {
+                                            console.log("sign up succussfully " + response);
+                                            location.replace("./home.html");
+                                        })
+                                        .catch(function(error) {
+                                            console.log("sign up faled " + error);
+
+                                            alert("Authentication failed.Are you really an admin ?");
+                                        });
+                                } else {
+                                    alert("Authentication failed.Are you really an admin ?");
+                                }
+                            });
+                    } else {
+                        console.log("not admin");
+                        alert("Authentication failed.Are you really an admin ?");
+                    }
+                });
             })
-            .catch((e) => {
-                console.log(e);
+            .catch(function(error) {
+                console.log("get admin data failed " + error);
             });
     }
 });
