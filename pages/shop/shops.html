@@ -30,7 +30,7 @@
                     <a href="/pages/home.html" class="top-a">Home</a>
                     <a href="/pages/shop/shops.html" class="top-a">Shops</a>
                     <a href="/pages/itemRequests.html" class="top-a">Items Requests</a>
-                    <a href="/pages/shops.html" class="top-a">Riders</a>
+                    <a href="/pages/rider/rider.html" class="top-a">Riders</a>
                     <a href="/pages/shops.html" class="top-a">Customers</a>
                     <a href="#">New Admin</a>
                 </div>
@@ -41,7 +41,7 @@
         <li><a href="/pages/home.html" class="top-a">Home</a></li>
         <li class="active"><a href="/pages/shops.html" class="top-a">Shops</a></li>
         <li><a href="/pages/itemRequests.html" class="top-a">Items Requests</a></li>
-        <li><a href="/pages/shops.html" class="top-a">Riders</a></li>
+        <li><a href="/pages/rider/rider.html" class="top-a">Riders</a></li>
         <li><a href="/pages/customer/customers.html" class="top-a">Customers</a></li>
         <li>
             <div class="dropdown">
@@ -57,15 +57,25 @@
     <div class="shopdisplay">
         <div class="sidenav">
             <ul class="sidenavbar">
+                <li class="side-li" style="border-color: blue;"><a href="/pages/shop/shopRequests.html" class="side-a" style="color: blue;">All Shops</a></li>
                 <li class="side-li"><a href="/pages/shop/shopRequests.html" class="side-a">Shop Requests</a></li>
-                <li class="side-li"><a href="/pages/customer/bannedCustomers.html" class="side-a">Baned Shops</a></li>
-                <li class="side-li"><a href="/pages/shop/shopRequests.html" class="side-a">Shop Requests</a></li>
-                <li class="side-li"><a href="/pages/shop/shopRequests.html" class="side-a">Shop Requests</a></li>
-                <li class="side-li"><a href="/pages/shop/shopRequests.html" class="side-a">Shop Requests</a></li>
+                <li class="side-li"><a href="/pages/customer/bannedCustomers.html" class="side-a">Banned Shops</a></li>
+               
             </ul>
         </div>
         <div class="table-show" style="padding: 12px;">
+            <div class="search">
+                <input type="text" placeholder="Search User" id="search-name">
+                <button class="search-button" onclick="searchShop()">Search</button>
+            </div>
             <table id="shop-data">
+                <tr>
+                    <th>Shop Name</th>
+                    <th>Shop Address</th>
+                    <th colspan="2">Shop Catogary</th>
+                </tr>
+            </table>
+            <table id="shop-data-search">
                 <tr>
                     <th>Shop Name</th>
                     <th>Shop Address</th>

@@ -14,7 +14,7 @@ firebase.analytics();
 const auth = firebase.auth();
 const db = firebase.firestore();
 const functions = firebase.functions();
-console.log("cancelled orders")
+console.log("cancelled orders");
 const table = document.querySelector("#cancled-orders-table");
 console.log("c");
 db.collection("cancled_orders")
