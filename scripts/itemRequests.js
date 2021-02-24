@@ -39,7 +39,7 @@ async function getShopListedItems(shoDoc) {
                 querySnapshot.forEach(function (doc) {
                     console.log(shoDoc.data());
                     console.log(doc.data());
-                    renderListedItems(doc,shoDoc);
+                    renderListedItems(doc, shoDoc);
                 });
 
             }
@@ -61,23 +61,25 @@ function renderListedItems(doc, snap) {
     let listedItemPrice = document.createElement("td");
     let addCommision = document.createElement("td");
     let giverPermission = document.createElement("button");
+    let diclinePermission = document.createElement("button");
+
     let f = document.createElement("form");
     let inp = document.createElement("input");
 
-    let shnamelabel=document.createElement("label");
-    let shdiv=document.createElement("div");
+    let shnamelabel = document.createElement("label");
+    let shdiv = document.createElement("div");
 
-    let shidlabel=document.createElement("label");
-    let shiddiv=document.createElement("div");
+    let shidlabel = document.createElement("label");
+    let shiddiv = document.createElement("div");
 
-    let itemnamelabel=document.createElement("label");
-    let itemnamediv=document.createElement("div");
+    let itemnamelabel = document.createElement("label");
+    let itemnamediv = document.createElement("div");
 
-    let itemidlabel=document.createElement("label");
-    let itemiddiv=document.createElement("div");
+    let itemidlabel = document.createElement("label");
+    let itemiddiv = document.createElement("div");
 
-    let listedpricelabel=document.createElement("label");
-    let listedpricediv=document.createElement("div");
+    let listedpricelabel = document.createElement("label");
+    let listedpricediv = document.createElement("div");
 
     f.setAttribute("id", "give-permission-" + doc.id);
     inp.setAttribute("type", "text");
@@ -88,10 +90,18 @@ function renderListedItems(doc, snap) {
     //addCommision.setAttribute("id", doc.id);
     addCommision.appendChild(f);
     giverPermission.setAttribute("class", "btn");
+    diclinePermission.setAttribute("class", "btn dicline");
     //giverPermission.setAttribute("id", doc.id);
     giverPermission.textContent = "Give Permission";
+    diclinePermission.textContent = "Decline Permission";
+
     giverPermission.onclick = function () {
-        myFun(doc,snap);
+        myFun(doc, snap, "accepted");
+        console.log(doc.id);
+    };
+
+    diclinePermission.onclick = function () {
+        myFun(doc, snap, "diclined");
         console.log(doc.id);
     };
 
@@ -101,19 +111,19 @@ function renderListedItems(doc, snap) {
     img.setAttribute("height", "50");
     itemImage.appendChild(img);
 
-    shnamelabel.textContent="Shop Name: ";
+    shnamelabel.textContent = "Shop Name: ";
     shopName.appendChild(shnamelabel);
 
-    shidlabel.textContent="Shop Id: ";
+    shidlabel.textContent = "Shop Id: ";
     shopId.appendChild(shidlabel);
 
-    itemnamelabel.textContent="Item Name: ";
+    itemnamelabel.textContent = "Item Name: ";
     itemName.appendChild(itemnamelabel);
 
-    itemidlabel.textContent="Item Id: ";
+    itemidlabel.textContent = "Item Id: ";
     itemId.appendChild(itemidlabel);
 
-    listedpricelabel.textContent="Listed Price: ";
+    listedpricelabel.textContent = "Listed Price: ";
     listedItemPrice.appendChild(listedpricelabel);
 
 
@@ -130,10 +140,11 @@ function renderListedItems(doc, snap) {
     shdiv.textContent = snap.data()["Shop Name"];
     shopName.appendChild(shdiv);
 
-    shiddiv.textContent=snap.id;
+    shiddiv.textContent = snap.id;
     shopId.appendChild(shiddiv);
 
-    
+    addCommision.appendChild(giverPermission);
+    addCommision.appendChild(diclinePermission);
 
     itemRow.appendChild(shopName);
     itemRow.appendChild(shopId);
@@ -142,30 +153,51 @@ function renderListedItems(doc, snap) {
     itemRow.appendChild(itemImage);
     itemRow.appendChild(listedItemPrice);
     itemRow.appendChild(addCommision);
-    itemRow.appendChild(giverPermission);
+    //itemRow.appendChild(giverPermission);
 
     // itemRow.setAttribute("id", doc.id);
 
     itemRequestsTable.appendChild(itemRow);
 }
 
-async function myFun(doc,snap) {
-    var form = document.querySelector("#give-permission-" + doc.id);
-    console.log(form[doc.id].value);
-    await db.collection("shops")
-        .doc(snap.id)
-        .collection("Listed Items")
-        .doc(doc.id)
-        .update({ itemPrice: form[doc.id].value, admin_permission: true })
-        .then(function () {
-            console.log("updated succesfully");
-            alert("permission Granded");
-            document.location.reload(true);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+async function myFun(doc, snap, status) {
+    if (status == "accepted") {
+        var form = document.querySelector("#give-permission-" + doc.id);
+        console.log(form[doc.id].value);
+        await db.collection("shops")
+            .doc(snap.id)
+            .collection("Listed Items")
+            .doc(doc.id)
+            .update({ itemPrice: form[doc.id].value, admin_permission: true })
+            .then(function () {
+                console.log("updated succesfully");
+                alert("permission Granded");
+                document.location.reload(true);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+    else {
+        await db.collection("shops")
+            .doc(snap.id)
+            .collection("Listed Items")
+            .doc(doc.id)
+            .update({ admin_permission: false })
+            .then(function () {
+                console.log("updated succesfully");
+                alert("permission Diclined");
+                document.location.reload(true);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
 }
+
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");

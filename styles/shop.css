@@ -10,6 +10,7 @@
     width: 80%;
     height: 95%;
     overflow-x: auto;
+    flex-direction: column;
 }
 
 table{
@@ -31,10 +32,36 @@ tr:hover{
     cursor: pointer;
 }
 .btn{
-    padding: 2px;
+    padding: 5px;
     border:2px solid #ddd;
-    font-size: 1.5vw;
+    width: 100%;
+    margin-bottom: 2px;
 }
+.suspend{
+    background-color: red;
+    color:white;
+    border:2px solid red;
+}
+.search{
+    display: flex;
+    padding: 5px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+input[type="text"]{
+    width: 70%;
+    height: 5vh;
+    padding: 5px;
+}
+.search-button{
+    width: 25%;
+    height: 5vh;
+}
+#shop-data-search{
+    visibility: hidden;
+}
+
 
 @media only screen and (max-width:600px){
     .shopdisplay{

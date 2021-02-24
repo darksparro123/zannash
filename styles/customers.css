@@ -1,3 +1,10 @@
+#customer-details-list-search{
+    visibility: hidden;
+}
+
+
+
+
 @media only screen and (min-width:600px){
     label{
         display: none;

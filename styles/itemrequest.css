@@ -1,5 +1,10 @@
 input[type="text"]{
     padding: 12px;
+    width: 100%;
+}
+.dicline{
+    background-color: red;
+    color: white;
 }
 
 @media only screen and (min-width:600px){
@@ -11,7 +16,7 @@ input[type="text"]{
 @media only screen and (max-width:600px){
     td{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
     label{
         font-weight: 600;
