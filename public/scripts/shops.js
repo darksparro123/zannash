@@ -20,9 +20,10 @@ firebase.analytics();
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-function getShopsFromFirestore() {
+async function getShopsFromFirestore() {
     // data storing variables
-    db.collection("shops")
+    loadspinner();
+    await db.collection("shops")
         .get()
         .then((snapshot) => {
             snapshot.docs.forEach((doc) => {
@@ -33,6 +34,7 @@ function getShopsFromFirestore() {
                 // getShopBankDetails(doc.id);
             });
         });
+        stopspinner();     
 }
 getShopsFromFirestore();
 
@@ -84,6 +86,7 @@ function renderShops(doc,status) {
 }
 
 async function searchShop() {
+    loadspinner();
     let searchval = document.getElementById("search-name").value;
     console.log(searchval);
     document.getElementById("shop-data").style.display = "none";
@@ -103,6 +106,7 @@ async function searchShop() {
     }).catch((error) => {
         console.log(error);
     });
+    stopspinner();
 
 }
 

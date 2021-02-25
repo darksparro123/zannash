@@ -21,7 +21,11 @@ const table = document.querySelector("#shop-data");
 
 
 // data storing variables
-db.collection("shops")
+
+
+async function getall(){
+    loadspinner();
+    await db.collection("shops")
     .where("admin permission", "==", false)
     .get()
     .then((snapshot) => {
@@ -33,6 +37,12 @@ db.collection("shops")
             // getShopBankDetails(doc.id);
         });
     });
+    stopspinner();
+
+
+}
+
+getall();
 
 function getShopDetails(shopId) {
     db.collection("shops")

@@ -18,7 +18,7 @@ const form = document.querySelector("#sign-up-form");
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-        location.replace("/pages/home.html");
+       location.replace("/public/pages/home.html");
     } else {
         // User is signed out.
     }
@@ -30,6 +30,7 @@ form.addEventListener("submit", (e) => {
     const password = form["password"].value;
 
     if (email != "" && password != "") {
+        loadspinner();
         db.collection("admins")
             .get()
             .then(function(querySnapshot) {
@@ -39,16 +40,19 @@ form.addEventListener("submit", (e) => {
                             .signInWithEmailAndPassword(email, password)
                             .then((e) => {
                                 console.log("sign in succusfully" + e);
-                                location.replace("./home.html");
+                                stopspinner();
+                                location.replace("/public/pages/home.html");
                             })
                             .catch((e) => {
+                                console.log(e["code"]);
                                 if (e["code"] == "auth/user-not-found") {
                                     firebase
                                         .auth()
                                         .createUserWithEmailAndPassword(email, password)
                                         .then(function(response) {
                                             console.log("sign up succussfully " + response);
-                                            location.replace("./home.html");
+                                            stopspinner();
+                                            location.replace("/public/pages/home.html");
                                         })
                                         .catch(function(error) {
                                             console.log("sign up faled " + error);
@@ -56,17 +60,19 @@ form.addEventListener("submit", (e) => {
                                             alert("Authentication failed.Are you really an admin ?");
                                         });
                                 } else {
+                                    stopspinner();
                                     alert("Authentication failed.Are you really an admin ?");
                                 }
                             });
                     } else {
                         console.log("not admin");
-                        alert("Authentication failed.Are you really an admin ?");
                     }
                 });
             })
             .catch(function(error) {
                 console.log("get admin data failed " + error);
             });
+    }else{
+        alert("Please Fill All Feilds");
     }
 });

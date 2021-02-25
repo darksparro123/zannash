@@ -20,6 +20,7 @@ db.settings({
 console.log("initialed firebase");
 
 async function getstatics() {
+    loadspinner();
     var shops, riders, users;
     await db.collection("Customer").onSnapshot((snapshot) => {
         users = snapshot.docs.length;
@@ -46,6 +47,7 @@ async function getstatics() {
     shopnum.textContent = shops;
     usernum.textContent = users;
     ridernum.textContent = riders;
+    stopspinner();
 }
 
 getstatics();

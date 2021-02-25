@@ -8,9 +8,11 @@
 
     <!-- Compiled and minified JavaScript -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
-    <link rel="stylesheet" href="/styles/home.css">
-    <link rel="stylesheet" href="/styles/shop.css">
-    <link rel="stylesheet" href="/styles/customers.css">
+    <link rel="stylesheet" href="/public/styles/home.css">
+    <link rel="stylesheet" href="/public/styles/shop.css">
+    <link rel="stylesheet" href="/public/styles/customers.css">
+    <link rel="stylesheet" href="/public/styles/loader.css">
+
 
     <title>Customers</title>
 
@@ -32,21 +34,21 @@
                 <button onclick="myFunction()" class="dropbtn"><i class="material-icons"
                         style="color: aliceblue;">menu</i></button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="/pages/home.html" class="top-a">Home</a>
-                    <a href="/pages/shop/shops.html" class="top-a">Shops</a>
-                    <a href="/pages/itemRequests.html" class="top-a">Items Requests</a>
-                    <a href="/pages/rider/rider.html" class="top-a">Riders</a>
-                    <li><a href="/pages/customer/customers.html" class="top-a">Customers</a></li>
+                    <a href="/public/pages/home.html" class="top-a">Home</a>
+                    <a href="/public/pages/shop/shops.html" class="top-a">Shops</a>
+                    <a href="/public/pages/itemRequests.html" class="top-a">Items Requests</a>
+                    <a href="/public/pages/rider/rider.html" class="top-a">Riders</a>
+                    <li><a href="/public/pages/customer/customers.html" class="top-a">Customers</a></li>
                     <a href="#">New Admin</a>
                 </div>
             </div>
             <div>DelivoAdmin</div>
         </div>
         <ul class="top-nav">
-            <li><a href="/pages/home.html" class="top-a">Home</a></li>
-            <li><a href="/pages/shop/shops.html" class="top-a">Shops</a></li>
-            <li><a href="/pages/itemRequests.html" class="top-a">Items Requests</a></li>
-            <li><a href="/pages/rider/rider.html" class="top-a">Riders</a></li>
+            <li><a href="/public/pages/home.html" class="top-a">Home</a></li>
+            <li><a href="public/pages/shop/shops.html" class="top-a">Shops</a></li>
+            <li><a href="/public/pages/itemRequests.html" class="top-a">Items Requests</a></li>
+            <li><a href="/public/pages/rider/rider.html" class="top-a">Riders</a></li>
             <li  class="active"><a href="/pages/customer/customers.html" class="top-a">Customers</a></li>
             <li>
                 <a href="/pages/shops.html" class="top-a">New Admin</a>
@@ -57,7 +59,7 @@
         <div class="sidenav">
             <ul class="sidenavbar">
                 <li class="side-li" style="border-color: blue;"><a href="/pages/cancled_orders.html" class="side-a" style="color: blue;">All Custommers</a></li>
-                <li class="side-li"><a href="/pages/customer/bannedCustomers.html" class="side-a">Baned Custommers</a></li>
+                <li class="side-li"><a href="/public/pages/customer/bannedCustomers.html" class="side-a">Baned Custommers</a></li>
             </ul>
         </div>
     <div id="customer-details" class="table-show">
@@ -94,8 +96,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-functions.js"></script>
 
+    <script src="/public/scripts/loader.js"></script>
 
-    <script src="/scripts/customers.js">
+    <script src="/public/scripts/customers.js">
     </script>
 </body>
 

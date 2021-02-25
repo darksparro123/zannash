@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Requests</title>
 
-    <link rel="stylesheet" href="/styles/home.css">
-    <link rel="stylesheet" href="/styles/shop.css">
+    <link rel="stylesheet" href="/public/styles/home.css">
+    <link rel="stylesheet" href="/public/styles/shop.css">
+    <link rel="stylesheet" href="/public/styles/loader.css">
+
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -24,22 +26,22 @@
                 <button onclick="myFunction()" class="dropbtn"><i class="material-icons"
                         style="color: aliceblue;">menu</i></button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="/pages/home.html" class="top-a">Home</a>
-                    <a href="/pages/shop/shops.html" class="top-a">Shops</a>
-                    <a href="/pages/itemRequests.html" class="top-a">Items Requests</a>
-                    <a href="/pages/rider/rider.html" class="top-a">Riders</a>
-                    <a href="/pages/shops.html" class="top-a">Customers</a>
+                    <a href="/public/pages/home.html" class="top-a">Home</a>
+                    <a href="/public/pages/shop/shops.html" class="top-a">Shops</a>
+                    <a href="/public/pages/itemRequests.html" class="top-a">Items Requests</a>
+                    <a href="/public/pages/rider/rider.html" class="top-a">Riders</a>
+                    <a href="/public/pages/shops.html" class="top-a">Customers</a>
                     <a href="#">New Admin</a>
                 </div>
             </div>
             <div>DelivoAdmin</div>
         </div>
     <ul class="top-nav">
-        <li><a href="/pages/home.html" class="top-a">Home</a></li>
-        <li class="active"><a href="/pages/shop/shops.html" class="top-a">Shops</a></li>
-        <li><a href="/pages/itemRequests.html" class="top-a">Items Requests</a></li>
-        <li><a href="/pages/rider/rider.html" class="top-a">Riders</a></li>
-        <li><a href="/pages/customer/customers.html" class="top-a">Customers</a></li>
+        <li><a href="/public/pages/home.html" class="top-a">Home</a></li>
+        <li class="active"><a href="/public/pages/shop/shops.html" class="top-a">Shops</a></li>
+        <li><a href="/public/pages/itemRequests.html" class="top-a">Items Requests</a></li>
+        <li><a href="/public/pages/rider/rider.html" class="top-a">Riders</a></li>
+        <li><a href="/public/pages/customer/customers.html" class="top-a">Customers</a></li>
         <li>
             <div class="dropdown">
                 <button onclick="myFunction()" class="dropbtn"><i class="material-icons"
@@ -56,9 +58,9 @@
     <div class="shopdisplay">
         <div class="sidenav">
             <ul class="sidenavbar">
-                <li class="side-li"><a href="/pages/shop/shops.html" class="side-a">All Shops</a></li>
-                <li class="side-li"  style="border-color: blue;"><a href="/pages/shop/shopRequests.html" class="side-a" style="color: blue;">Shop Requests</a></li>
-                <li class="side-li"><a href="/pages/customer/bannedCustomers.html" class="side-a">Banned Shops</a></li>
+                <li class="side-li"><a href="/public/pages/shop/shops.html" class="side-a">All Shops</a></li>
+                <li class="side-li"  style="border-color: blue;"><a href="/public/pages/shop/shopRequests.html" class="side-a" style="color: blue;">Shop Requests</a></li>
+                <li class="side-li"><a href="/public/pages/customer/bannedCustomers.html" class="side-a">Banned Shops</a></li>
             </ul>
         </div>
         <div class="table-show" style="padding: 12px;">
@@ -82,8 +84,9 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
+    <script src="/public/scripts/loader.js"></script>
 
-    <script src="/scripts/shopRequests.js"></script>
+    <script src="/public/scripts/shopRequests.js"></script>
 </body>
 
 </html>

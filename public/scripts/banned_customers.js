@@ -16,8 +16,9 @@ const db = firebase.firestore();
 const functions = firebase.functions();
 const table = document.querySelector("#banned-customers-table");
 
-
-db.collection("banned_users")
+async function getall(){
+    loadspinner();
+    await db.collection("banned_users")
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -25,6 +26,12 @@ db.collection("banned_users")
         });
     })
     .catch(function(error) {});
+    stopspinner();
+
+}
+
+getall();
+
 
 function renderBannedUsers(doc) {
     let tr = document.createElement("tr");

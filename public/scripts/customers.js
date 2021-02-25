@@ -21,7 +21,10 @@ db.settings({
 const customerDetailsList = document.querySelector("#customer-details-list");
 const customerDetailsListsearch = document.querySelector("#customer-details-list-search");
 
-db.collection("Customer")
+
+async function getall(){
+    loadspinner();
+    await db.collection("Customer")
     .get()
     .then(function (querySnapshot) {
         var status = "normal";
@@ -31,6 +34,10 @@ db.collection("Customer")
         });
     })
     .catch(function (error) { });
+stopspinner();
+}
+getall();
+
 
 // get customer details collection
 function getCustomerCollection(docId, status) {
@@ -168,6 +175,7 @@ function myFunction() {
 
 
 async function searchUser() {
+    loadspinner();
     let searchval = document.getElementById("search-name").value;
     console.log(searchval);
     document.getElementById("customer-details-list").style.display = "none";
@@ -192,6 +200,7 @@ async function searchUser() {
     }).catch((error) => {
         console.log(error);
     });
+    stopspinner();
 
 }
 

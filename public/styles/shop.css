@@ -44,6 +44,7 @@ tr:hover{
 }
 .search{
     display: flex;
+  
     padding: 5px;
     width: 100%;
     align-items: center;

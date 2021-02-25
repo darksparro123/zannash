@@ -15,7 +15,11 @@ firebase.analytics();
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-db.collection("shops")
+
+async function getall(){
+    loadspinner();
+
+    await db.collection("shops")
     .get()
     .then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
@@ -26,6 +30,13 @@ db.collection("shops")
     .catch(function (error) {
         console.log("Get shop id s failed  " + error);
     });
+
+    stopspinner();
+
+}
+
+getall();
+
 
 async function getShopListedItems(shoDoc) {
     await db.collection("shops")
