@@ -16,6 +16,14 @@ const db = firebase.firestore();
 
 const form = document.querySelector("#sign-up-form");
 
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        location.replace("/pages/home.html");
+    } else {
+        // User is signed out.
+    }
+});
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const email = form["email"].value;

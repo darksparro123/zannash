@@ -19,32 +19,51 @@ db.settings({
 });
 console.log("initialed firebase");
 
-
-async function getstatics(){
-    var shops,riders,users;
-    await db.collection("Customer").onSnapshot(snapshot=>{
-        users=snapshot.docs.length;
+async function getstatics() {
+    var shops, riders, users;
+    await db.collection("Customer").onSnapshot((snapshot) => {
+        users = snapshot.docs.length;
     });
 
-    await db.collection("Riders").get().then((snapshot)=>{
-        riders=snapshot.docs.length;
-    });
+    await db
+        .collection("Riders")
+        .get()
+        .then((snapshot) => {
+            riders = snapshot.docs.length;
+        });
 
-    await db.collection("shops").get().then((snapshot)=>{
-        shops=snapshot.docs.length;
-    });
+    await db
+        .collection("shops")
+        .get()
+        .then((snapshot) => {
+            shops = snapshot.docs.length;
+        });
 
-    var shopnum=document.getElementById("shops");
-    var usernum=document.getElementById("users");
-    var ridernum=document.getElementById("riders");
+    var shopnum = document.getElementById("shops");
+    var usernum = document.getElementById("users");
+    var ridernum = document.getElementById("riders");
 
-    shopnum.textContent=shops;
-    usernum.textContent=users;
-    ridernum.textContent=riders;
+    shopnum.textContent = shops;
+    usernum.textContent = users;
+    ridernum.textContent = riders;
 }
 
 getstatics();
 
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function test(orderId) {
+    db
+        .collection("orders")
+        .get()
+        .then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+
+            });
+        })
+        .catch(function (error) {
+    
+        })
 }
