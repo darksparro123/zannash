@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopDetails</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/home.css">
+    <link rel="stylesheet" href="/styles/shop.css">
+    <link rel="stylesheet" href="/styles/shopdetails.css">
+    <style>
+        * {
+            font-family: 'Ubuntu';
+        }
+    </style>
+</head>
+<body class="main" style="align-items: center;">
+    <div class="navbar">
+        <div class="title">
+            <div class="dropdown" id="mobile-screen">
+                <button onclick="myFunction()" class="dropbtn"><i class="material-icons"
+                        style="color: aliceblue;">menu</i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/pages/home.html" class="top-a">Home</a>
+                    <a href="/pages/shop/shops.html" class="top-a">Shops</a>
+                    <a href="/pages/itemRequests.html" class="top-a">Items Requests</a>
+                    <a href="/pages/shops.html" class="top-a">Riders</a>
+                    <a href="/pages/shops.html" class="top-a">Customers</a>
+                    <a href="#">New Admin</a>
+                </div>
+            </div>
+            <div>DelivoAdmin</div>
+        </div>
+    <ul class="top-nav">
+        <li><a href="/pages/home.html" class="top-a">Home</a></li>
+        <li class="active"><a href="/pages/shops.html" class="top-a">Shops</a></li>
+        <li><a href="/pages/itemRequests.html" class="top-a">Items Requests</a></li>
+        <li><a href="/pages/shops.html" class="top-a">Riders</a></li>
+        <li><a href="/pages/customer/customers.html" class="top-a">Customers</a></li>
+        <li>
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn"><i class="material-icons"
+                        style="color: aliceblue;">settings</i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">New Admin</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    </div>
+      <div id="shops-list-div">
+        <div id="shops-list">
+            <div id="shop-details">
+                <h3 style="display: flex;width:100%;background-color:rgb(22, 22, 82);color: #ddd;padding: 5px;">Shop Details</h2>
+            </div>
+            <div id="owner-details">
+                <h3 style="display: flex;width:100%;background-color:rgb(22, 22, 82);color: #ddd;padding: 5px;">Owner's Details</h2>
+            </div>
+            <div id="bank-details">
+                <h3 style="display: flex;width:100%;background-color:rgb(22, 22, 82);color: #ddd;padding: 5px;">Bank Details</h2>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <script src="/scripts/shopdetails.js"></script>
+</body>
+</html>
