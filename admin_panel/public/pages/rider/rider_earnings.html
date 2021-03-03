@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Rider Earnings</title>
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <table class="striped amber lighten-3" id="last-month-earnings">
+            <caption>
+                <h3 class="indigo-text bold underline amber">Rider earnings in last month</h3>
+            </caption>
+            <th>Rider's Name</th>
+            <th>Rider's Mobile Number</th>
+            <th>No: of Delivers</th>
+            <th>Rider's Proffit</th>
+            <th>Company's Proffit</th>
+            <th>Total Earning</th>
+        </table>
+    </div>
+
+
+    <div class="container">
+
+        <table class="striped amber lighten-3" id="year-earnings">
+            <caption>
+                <h3 class="indigo-text bold underline amber">Rider earnings in all time</h3>
+            </caption>
+            <th>Rider's Name</th>
+            <th>Rider's Mobile Number</th>
+            <th>No: of Delivers</th>
+            <th>Rider's Proffit</th>
+            <th>Company's Proffit</th>
+            <th>Total Earning</th>
+        </table>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-functions.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/public/scripts/rider_earnings.js"></script>
+</body>
+
+</html>
