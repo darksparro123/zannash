@@ -53,17 +53,3 @@ getstatics();
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
-
-function test(orderId) {
-    db
-        .collection("orders")
-        .get()
-        .then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-
-            });
-        })
-        .catch(function (error) {
-    
-        })
-}

@@ -18,7 +18,7 @@ const form = document.querySelector("#sign-up-form");
 
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-        location.replace("/pages/home.html");
+        location.replace("pages/home.html");
     } else {
         // User is signed out.
     }
